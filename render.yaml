@@ -3,9 +3,9 @@ services:
     name: spam-detection-api
     env: python
     plan: free
-    buildCommand: pip install -r requirements_fastapi.txt
-    startCommand: python app.py
-    healthCheckPath: /health
+    buildCommand: pip install -r requirements.txt
+    startCommand: python test_app.py
+    healthCheckPath: /ping
     envVars:
       - key: PORT
         value: 8000

@@ -25,5 +25,5 @@ EXPOSE 8000
 
 # Railway handles health checks
 
-# Run the application
-CMD ["python", "app.py"]
+# Run the test application first
+CMD ["python", "test_app.py"]
