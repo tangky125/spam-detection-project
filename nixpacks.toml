@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["python39", "pip"]
+
+[phases.install]
+cmds = ["pip install -r requirements_fastapi.txt"]
+
+[phases.build]
+cmds = ["echo 'Python backend - no build needed'"]
+
+[start]
+cmd = "python app.py"

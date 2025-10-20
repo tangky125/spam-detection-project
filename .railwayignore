@@ -1,0 +1,13 @@
+# Ignore frontend files - Railway should only deploy the Python backend
+app/
+components/
+lib/
+package.json
+package-lock.json
+tsconfig.json
+next.config.js
+next-env.d.ts
+.next/
+node_modules/
+*.md
+DEPLOYMENT.md
