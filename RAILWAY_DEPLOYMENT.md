@@ -3,8 +3,9 @@
 ## ✅ Files Created to Fix Railway Deployment:
 
 1. **`.railwayignore`** - Tells Railway to ignore frontend files
-2. **`nixpacks.toml`** - Forces Railway to treat this as Python-only
-3. **`requirements.txt`** - Python dependencies for Railway
+2. **`Dockerfile`** - Custom Docker build for Python backend
+3. **`railway.json`** - Updated to use Dockerfile builder
+4. **`requirements.txt`** - Python dependencies for Railway
 
 ## 🔄 Next Steps:
 
