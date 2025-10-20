@@ -116,16 +116,7 @@ def load_and_train_models():
 @app.on_event("startup")
 async def startup_event():
     print("Starting up Spam Detection API...")
-    # Start model training in background
-    import asyncio
-    asyncio.create_task(train_models_async())
-
-async def train_models_async():
-    """Train models in background"""
-    try:
-        load_and_train_models()
-    except Exception as e:
-        print(f"Error in background model training: {e}")
+    print("Models will be trained on first request...")
 
 # Health check endpoint
 @app.get("/")
@@ -156,6 +147,11 @@ async def detect_spam(request: SpamRequest):
     try:
         if not request.text.strip():
             raise HTTPException(status_code=400, detail="Text cannot be empty")
+        
+        # Train models if not already trained
+        if tfidf is None or clf is None:
+            print("Training models on first request...")
+            load_and_train_models()
         
         # Preprocess text
         cleaned_text = text_transform(request.text)
