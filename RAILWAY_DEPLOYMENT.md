@@ -4,8 +4,9 @@
 
 1. **`.railwayignore`** - Tells Railway to ignore frontend files
 2. **`Dockerfile`** - Custom Docker build for Python backend
-3. **`railway.json`** - Updated to use Dockerfile builder
+3. **`railway.json`** - Updated to use Dockerfile builder with `/ping` health check
 4. **`requirements.txt`** - Python dependencies for Railway
+5. **Updated `app.py`** - Background model training + `/ping` endpoint
 
 ## 🔄 Next Steps:
 

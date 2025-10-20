@@ -116,7 +116,16 @@ def load_and_train_models():
 @app.on_event("startup")
 async def startup_event():
     print("Starting up Spam Detection API...")
-    load_and_train_models()
+    # Start model training in background
+    import asyncio
+    asyncio.create_task(train_models_async())
+
+async def train_models_async():
+    """Train models in background"""
+    try:
+        load_and_train_models()
+    except Exception as e:
+        print(f"Error in background model training: {e}")
 
 # Health check endpoint
 @app.get("/")
@@ -135,6 +144,11 @@ async def health_check():
             "kmeans": kmeans is not None
         }
     }
+
+# Simple health check that works even during model training
+@app.get("/ping")
+async def ping():
+    return {"status": "pong", "message": "API is running"}
 
 # Spam detection endpoint
 @app.post("/detect", response_model=SpamResponse)
